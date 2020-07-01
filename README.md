@@ -1,6 +1,6 @@
-# beer
+# A Vue Periodic Table of the Elements
 
-> Beers
+> A Vue Periodic Table of the Elements
 
 ## Build Setup
 
