@@ -44,7 +44,7 @@ export default {
     // window.addEventListener('scroll', () => {
     //   this.bottom = this.bottomVisible()
     // })
-    this.addelements() 
+    this.addelement() 
   },
   methods: {
     bottomVisible() {
