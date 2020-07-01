@@ -4,19 +4,19 @@
     <h1> The Periodic Table of Elements </h1>
     <div v-if="elements.length === 0" class="loading">Getting the table ready!</div>
     <div v-for="element in elements" class="element-contain">
-      <div class="element-img">
+      <!-- <div class="element-img">
         <img :src="element.img" height="350" />
-      </div>
+      </div> -->
       <div class="element-info">
         <h2>{{ element.name }}</h2>
-        <p class="bright">{{ element.tagline }}</p>
+        <!-- <p class="bright">{{ element.tagline }}</p>
         <p><span class="bright">Description:</span> {{ element.desc }}</p>
         <p><span class="bright">Tips:</span> {{ element.tips }}</p>
-        <h3 class="bright">Food Pairings</h3>
+        <h3 class="bright">Food Pairings</h3> -->
         <ul>
-          <li v-for="item in element.food">
+          <!-- <li v-for="item in element.food">
             {{ item }}
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
@@ -57,33 +57,38 @@ export default {
     addelement() {
       axios.get('https://neelpatel05.pythonanywhere.com/')
         .then(response => {
-          console.log(response.data)
-          let api = response.data[0];
-          let info = {
-            atomicMass: api.atomicMass,
-            atomicNumber: api.atomicNumber,
-            atomicRadius: api.atomicRadius,
-            boilingPoint: api.boilingPoint,
-            bondingType: api.bondingType,
-            cpkHexColor: api.cpkHexColor,
-            density: api.density,
-            electronAffinity: api.electronAffinity,
-            electronegativity: api.electronegativity,
-            electronicConfiguration: api.electronicConfiguration,
-            groupBlock: api.groupBlock,
-            ionRadius: api.ionRadius,
-            ionizationEnergy: api.ionizationEnergy,
-            meltingPoint: api.meltingPoint,
-            name: api.name,
-            oxidationStates: api.oxidationStates,
-            standardState: api.standardState,
-            symbol: api.symbol,
-            vanDelWaalsRadius: api.vanDelWaalsRadius,
-            yearDiscovered: api.yearDiscovered
+          // console.log(response.data)
+          const elements = response.data
+          console.log(elements)
+          for (let i = 0; i < elements.length; i++) {
+            const api = elements[i];
+            const info = {
+              atomicMass: api.atomicMass,
+              atomicNumber: api.atomicNumber,
+              atomicRadius: api.atomicRadius,
+              boilingPoint: api.boilingPoint,
+              bondingType: api.bondingType,
+              cpkHexColor: api.cpkHexColor,
+              density: api.density,
+              electronAffinity: api.electronAffinity,
+              electronegativity: api.electronegativity,
+              electronicConfiguration: api.electronicConfiguration,
+              groupBlock: api.groupBlock,
+              ionRadius: api.ionRadius,
+              ionizationEnergy: api.ionizationEnergy,
+              meltingPoint: api.meltingPoint,
+              name: api.name,
+              oxidationStates: api.oxidationStates,
+              standardState: api.standardState,
+              symbol: api.symbol,
+              vanDelWaalsRadius: api.vanDelWaalsRadius,
+              yearDiscovered: api.yearDiscovered
           };
+          // console.log(info.name)
           this.elements.push(info)
+          }
           // if (this.bottomVisible()) {
-            this.addelement()
+            // this.addelement()
           // }
       })
     }
